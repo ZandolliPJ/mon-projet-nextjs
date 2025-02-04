@@ -1,0 +1,34 @@
+name: CI/CD for Next.js
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.10.0' # Choisissez la version de Node.js que vous utilisez
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests (si vous avez des tests)
+      run: npm test # Facultatif, si vous avez des tests à exécuter
+
+    - name: Build Next.js app
+      run: npm run build
+
+    - name: Deploy to Vercel (ou autre plateforme de déploiement)
+      run: npm run deploy # Vous pouvez configurer ce script pour Vercel ou autre service.
