@@ -21,10 +21,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    # Supprimez ou commentez l'étape des tests si vous n'en avez pas pour l'instant
-    # - name: Run tests (si vous avez des tests)
-    #   run: npm test
-
     - name: Build Next.js app
       run: npm run build
 
