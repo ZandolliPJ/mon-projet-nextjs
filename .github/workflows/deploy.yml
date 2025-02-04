@@ -3,10 +3,7 @@ name: CI/CD for Next.js
 on:
   push:
     branches:
-      - master
-  pull_request:
-    branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -19,16 +16,17 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20.10.0' # Choisissez la version de Node.js que vous utilisez
+        node-version: '16'
 
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests (si vous avez des tests)
-      run: npm test # Facultatif, si vous avez des tests à exécuter
+    # Supprimez ou commentez l'étape des tests si vous n'en avez pas pour l'instant
+    # - name: Run tests (si vous avez des tests)
+    #   run: npm test
 
     - name: Build Next.js app
       run: npm run build
 
-    - name: Deploy to Vercel (ou autre plateforme de déploiement)
-      run: npm run deploy # Vous pouvez configurer ce script pour Vercel ou autre service.
+    - name: Start the app
+      run: npm run start
